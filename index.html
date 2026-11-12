@@ -126,6 +126,18 @@ box-shadow:0 5px 10px #000,inset 0 1px rgba(255,255,255,.15);transition:.3s;opac
 
 .btn{border-top:4px solid #eef7ff}
 .board{border-top:4px solid #eef7ff}.tag{border-top:3px solid #eaf4ff}
+#story{position:fixed;inset:0;z-index:58;background:radial-gradient(circle at 50% 0%,#1a2638,#03060b 70%);overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;pointer-events:none;transition:opacity 1s}
+#story.on{opacity:1;pointer-events:auto}
+.sw{max-width:560px;margin:0 auto;padding:56px 22px 90px}
+.st{font:600 30px var(--thai);color:var(--gold);margin-bottom:6px}
+.sk{font:11px var(--code);letter-spacing:.2em;color:#ff3b3b;border:2px solid #ff3b3b;padding:3px 10px;transform:rotate(-4deg);margin-bottom:16px;display:inline-block}
+.ch{font:12px var(--code);letter-spacing:.2em;color:var(--gold);margin:46px 0 14px;text-align:center}
+.sp{font-size:15px;line-height:1.95;color:#d6deea;margin-bottom:16px;opacity:0;filter:blur(8px);transform:translateY(16px);transition:opacity 1.1s,filter 1.1s,transform 1.1s}
+.sp.on{opacity:1;filter:none;transform:none}
+.sp.d{color:#ffe9a8;font-style:italic;border-left:2px solid rgba(212,175,55,.5);padding-left:12px}
+.sp.n{color:#9fb4cc;text-align:center;font-style:italic}
+.rd{background:#000;color:transparent;box-shadow:0 0 0 2px #000;transition:background .9s .7s,color .9s .7s,box-shadow .9s .7s}
+.sp.on .rd{background:transparent;color:#ffe55c;box-shadow:none}
 .rink{display:block;width:100%;height:180px;border-radius:4px;border:1px solid rgba(180,220,255,.4);box-shadow:inset 0 0 25px rgba(0,0,0,.5),0 0 18px rgba(140,200,255,.2);touch-action:manipulation;cursor:pointer}
 .hint{font-family:var(--code);font-size:11px;color:#6d7b92;margin-top:8px}
 /* น้ำแข็งเกาะ */
@@ -139,10 +151,54 @@ background:#10161f;border:1px solid var(--gold);color:var(--gl);font-family:var(
 </head>
 <body class="pre">
 <div class="flash" id="flash"></div>
-<div id="intro"><div class="ib">แฟ้มคดี</div><div class="is">CASE #009 // ฆาตกรรมบนลานน้ำแข็ง</div><div class="ih">แตะเพื่อเข้าสู่ที่เกิดเหตุ</div></div>
-<div id="ver"><h2>สรุปคดี</h2><p id="vt">เก็บหลักฐานครบแล้ว... ใครคือฆาตกรบนลานน้ำแข็ง?</p>
-<button class="btn sus" data-s="0"><span>⛸ โค้ชสเก็ต</span></button><button class="btn sus" data-s="1"><span>🔦 ผู้ดูแลลานน้ำแข็ง</span></button><button class="btn sus" data-s="2"><span>🏆 คู่แข่งสเก็ตคู่</span></button>
+<div id="intro"><div class="ib">แฟ้มคดี</div><div class="is">CASE #009</div><div class="ih">แตะเพื่อเข้าสู่ที่เกิดเหตุ</div></div>
+<div id="ver"><h2>สรุปคดี</h2><p id="vt">เก็บหลักฐานครบแล้ว... ใครคือผู้ลงมือ?</p>
+<button class="btn sus" data-s="0"><span>🧥 โค้ชวิคเตอร์</span></button><button class="btn sus" data-s="1"><span>👮 ผู้กองเดวิด</span></button><button class="btn sus" data-s="2"><span>⛸ เซสชั่น</span></button>
 <button class="btn sus" id="vc" style="display:none"><span>ปิดแฟ้มคดี</span></button></div>
+<div id="story"><div class="sw"><div style="text-align:center"><div class="sk">DECLASSIFIED</div><h2 class="st">แฟ้มลับ: เซสชั่น</h2></div>
+<div class="ch">แฟ้มที่ 1 // วัยเด็ก</div>
+<p class="sp">ในวัยเด็ก เซสชั่นไม่ได้มีชีวิตที่สวยงามและอบอุ่น เขาเคยเป็นเพียงเด็กกำพร้าที่ถูกเลี้ยงโดยสถานสงเคราะห์ วันหนึ่ง ได้มีชายสวมชุดสูทมาอุปถัมภ์ เขารู้สึกดีใจมากที่จะได้ออกไปใช้ชีวิตอิสระ แต่พอได้ออกมา เรื่องราวกลับไม่เป็นอย่างที่คิด</p>
+<p class="sp">องค์กรไม่ได้ช่วยเหลือเขาด้วยความเมตตา แต่นำเขามา “ชุบเลี้ยง” เพื่อให้กลายเป็นเครื่องมือ สัญชาตญาณการเอาชีวิตรอดของเซสถูกหล่อหลอมด้วยความโหดเหี้ยมและความโดดเดี่ยว เซสชั่นเติบโตมาในฐานะ <mark class="rd">“หมาล่าเนื้อ”</mark> และต้องทำตามคำสั่งอย่างไร้เงื่อนไข</p>
+<div class="ch">แฟ้มที่ 2 // ภารกิจแฝงตัว</div>
+<p class="sp">เมื่อเติบโตขึ้น เซสชั่นได้รับมอบหมายให้แฝงตัวเข้าไปในคณะสเก็ตลีลาชื่อดัง เขาสามารถเข้าร่วมอย่างง่ายดายเนื่องจากทักษะทางด้านกีฬาของเขาที่ถูกฝึกมาตั้งแต่เด็ก เพื่อสืบหาความลับบางอย่าง แต่แล้วสถานการณ์ก็ซับซ้อนเมื่อเกิดคดีฆาตกรรมสะเทือนขวัญขึ้น</p>
+<p class="sp">เอเลน่า นักสเก็ตสาวถูกพบนอนจมกองเลือดกลางลานสเก็ต คาดว่าเป็นการฆาตกรรม มีข่าวลือหนาหูว่าเธอไปรู้ความลับขององค์กรใต้ดินเข้าจึงถูกสั่งเก็บ</p>
+<p class="sp">หลังจากรู้ข่าวเซสก็ตกใจมาก เขากลัวว่าเขาอาจจะเป็นรายต่อไป ถ้าเป้าหมายของฆาตกรคือนักสเก็ต เขาจึงได้หายตัวไปหลังเหตุการณ์นั้น</p>
+<p class="sp n">ตัดภาพมาสู่ปัจจุบัน...</p>
+<div class="ch">แฟ้มที่ 3 // ปัจจุบัน</div>
+<p class="sp">แสงสปอตไลต์ดวงใหญ่สาดตรงลงมาที่ฉัน ไอเย็นจากผืนน้ำแข็งลอยละล่องขึ้นมาปะทะใบหน้า เสียงปรบมือและเสียงกรีดร้องด้วยความชื่นชมจากผู้ชมรอบสนามดังกระหึ่ม ทุกคนในลานแห่งนี้รู้จักฉันในนาม “เซสชั่น” ดาวรุ่งดวงใหม่แห่งวงการสเก็ตลีลาผู้มีท่วงท่าการสไลด์ที่เยือกเย็น เป็นทางการ และเต็มไปด้วยความลึกลับ</p>
+<p class="sp">สำหรับคนดูทั่วไป... ฉันคือนักสเก็ตอัจฉริยะที่เพิ่งย้ายเข้ามาในคณะ</p>
+<p class="sp">สำหรับทางตำรวจ... ฉันคือนักสืบและพยานปากเอกที่คอยให้ความร่วมมือสืบหาเบาะแสอย่างใกล้ชิดเกี่ยวกับการตายของเอเลน่า</p>
+<p class="sp">คดีฆาตกรรมของเอเลน่าช่างซับซ้อนจนตำรวจมืดแปดด้าน ทุกคนคิดว่าฉันกำลังเล่นเป็นนักสืบจำเป็นเพื่อทวงความยุติธรรม โดยไม่มีใครรู้เลยว่า หน้ากากพลเมืองดีนี้ คือการซ้อนละครฉากใหญ่ที่สุด</p>
+<div class="ch">แฟ้มที่ 4 // ห้องแต่งตัว</div>
+<p class="sp d">"ได้เรื่องไหม เซสชั่น?"</p>
+<p class="sp">เสียงของผู้กองเดวิดดังขึ้นจากมุมมืดของห้องแต่งตัว หลังจากที่การซ้อมรอบดึกจบลงและไฟรอบนอกเริ่มปิด ฉันนั่งอยู่บนม้านั่ง ค่อยๆ เช็ดใบมีดสเก็ตคู่ใจด้วยท่าทีเรียบเฉย</p>
+<p class="sp d">"ผมบีบวงผู้ต้องสงสัยจนเหลือคนเดียวแล้วครับผู้กอง" พูดด้วยสีหน้านิ่งเฉย "โค้ชวิคเตอร์... เขาแอบขู่กรรโชกเงินจากเอเลน่า คืนนี้หลังลานสเก็ตปิด ผมนัดเขามาเค้นความจริงที่กลางลานน้ำแข็งแล้ว และผมอยากให้ผู้กองมาสแตนด์บายรอจับกุมด้วย"</p>
+<p class="sp">เดวิดพยักหน้ารับด้วยความเชื่อใจ "ขอบใจมากนะเซสชั่น ถ้าไม่ได้คนในคณะที่คอยช่วยสืบเงียบๆ แบบนาย คดีนี้คงกลายเป็นคดีมุมตึกไปแล้ว"</p>
+<p class="sp">ฉันยิ้มบางๆ ให้เขา... รอยยิ้มภายใต้คราบพลเมืองดีผู้ผดุงความยุติธรรม</p>
+<p class="sp">ณ เวลาเที่ยงคืนตรง... ลานสเก็ตปิดไฟมืดสนิท แสงจันทร์วันเพ็ญสาดส่องผ่านหลังคากระจกบานยักษ์ลงมากระทบผิวน้ำแข็งจนดูราวกับกระจกเงาบานใหญ่ ฉันในชุดแสดงสีเทามีอัญมณีเม็ดใหญ่อยู่ที่กลางอกได้ก้าวลงสู่ผืนน้ำแข็งอันหนาวเหน็บ สไลด์ตัวไปยืนนิ่งอยู่ใจกลางลานอย่างสง่างาม</p>
+<p class="sp">เสียงฝีเท้าหนักๆ ก้าวเข้ามา... แต่ผู้ที่เดินนำออกมาจากความมืดกลับเป็นผู้กองเดวิด พร้อมกับโค้ชวิคเตอร์</p>
+<p class="sp d">"ผู้กอง? นี่มันหมายความว่ายังไง?" ฉันแกล้งถามด้วยน้ำเสียงตกใจ ปรับสีหน้าให้ดูเหมือนคนที่กำลังเจอแผนซ้อนแผน</p>
+<p class="sp">เดวิดไม่ได้ตอบในทันที เขาเดินเข้ามาหยุดอยู่ที่ขอบลานสเก็ต ยื่นปืนเล็งตรงมาที่อกของฉัน "เลิกเล่นละครได้แล้ว เซสชั่น... หรือฉันต้องเรียกนายด้วยชื่อ <mark class="rd">เซส โซโลมูเอล</mark>ที่ไม่มีใครรู้จักดีล่ะ?"</p>
+<p class="sp">ฉันนิ่งไปเล็กน้อย แต่ยังคงรักษาความสุขุมไว้ "คุณพูดเรื่องอะไรผู้กอง? ผมคือนักสืบที่มาช่วยคุณทำคดีนะ"</p>
+<p class="sp d">"ใช่ นายแกล้งทำเป็นนักสืบที่มาช่วยทำคดี... แต่นายทำเพื่อกลบฝังความผิดของตัวเอง!" เดวิดพูดเสียงกร้าว "บาดแผลที่คอของเอเลน่า เกิดจากของมีคม ซึ่งสันนิษฐานว่าเกิดจากการตวัดใบมีดสเก็ตขึ้นปาดหลอดลมในจังหวะที่หมุนตัวกลางอากาศสามรอบครึ่ง (Triple Axel) อย่างแม่นยำ คนที่จะทำแบบนั้นได้ต้องไม่ใช่แค่คนสเก็ตเป็น... แต่ต้องเป็นระดับอัจฉริยะ ซึ่งในที่แห่งนี้มีแค่นายคนเดียว เซสชั่น"</p>
+<p class="sp d">"แต่คืนเกิดเหตุ ผมมีหลักฐานที่อยู่ชัดเจนว่าผมอยู่ในห้องตลอด และผมก็ไม่ได้มีเรื่องกับเธอ ผมจะทำร้ายเธอทำไมล่ะครับ" ฉันแย้ง พยายามหาทางสู้</p>
+<p class="sp d">"นั่นมันหลักฐานปลอมที่ถูกจัดการอย่างเป็นระบบเกินกว่าที่คนธรรมดาจะทำได้! ฉันแอบสืบประวัตินายลึกขุดรากถอนโคน จนเจอร่องรอยการลบข้อมูลระบบราชการ นายไม่ได้เป็นแค่นักสเก็ต... แต่นายสังกัดอยู่ใน<mark class="rd">องค์กรสายลับที่คอยจัดการงานสกปรก</mark>ต่างหาก!" เดวิดตะโกน "เอเลน่าล่วงรู้ว่านายคือนักสืบสายลับจากองค์กรนั้น และรู้ว่านายกำลังแอบเข้ามาสืบและทำภารกิจบางอย่าง นายเลยลงมือฆ่าเธอที่นี่เมื่อ 1 ปีก่อน แล้วแสร้งทำเป็นเสนอตัวช่วยฉันสืบคดี เพื่อที่นายจะได้ 'ควบคุม' ทิศทางของคดี และโยนความผิดให้โค้ชวิคเตอร์! บทนักสืบและนักสเก็ตของนายมันจบลงแล้วล่ะ"</p>
+<div class="ch">แฟ้มที่ 5 // บทละครฉากสุดท้าย</div>
+<p class="sp">ความเงียบสงัดเข้าปกคลุมลานน้ำแข็งอันกว้างใหญ่ ลมหายใจของโค้ชวิคเตอร์ดังกระหืดกระหอบด้วยความกลัว</p>
+<p class="sp">ฉันยืนนิ่งอยู่กลางลาน... จากนั้น ความรู้สึกตึงเครียดทั้งหมดก็มลายหายไป บทบาท 'นักสืบและนักสเก็ต' ที่ฉันสวมใส่มาตลอดยาวนานหลุดออกจากใบหน้า นึกย้อนไปถึงวัยเด็กที่ถูกเลี้ยงมาเป็นดั่งหมาล่าเนื้อ ความรู้สึกเจ็บปวดและโดดเดี่ยวถูกแปรเปลี่ยนเป็นความเย็นชาในพริบตา</p>
+<p class="sp">ฉันระเบิดเสียงหัวเราะเบาๆ ออกมาในลำคอ น้ำเสียงแปรเปลี่ยนเป็นเยือกเย็นและทรงอำนาจ ดวงตาของฉันจับจ้องไปที่เดวิด... มันไม่มีความหวาดกลัวอยู่เลยแม้แต่น้อย</p>
+<p class="sp d">"แปะ... แปะ... แปะ..." ฉันยกมือขึ้นปรบมือช้าๆ ท่ามกลางความมืด</p>
+<p class="sp d">"เป็นการวิเคราะห์ที่ยอดเยี่ยมมากครับผู้กอง... สมกับเป็นตำรวจมือดีที่มองทะลุถึงองค์กรของผม" ฉันเริ่มสไลด์ตัวบนผืนน้ำแข็ง วาดลวดลายเป็นวงกลมล้อมรอบเดวิดอย่างเชื่องช้า ท่วงท่ายังคงงดงามละเมียดละไม</p>
+<p class="sp">แต่เสียงใบมีดที่กรีดลงบนน้ำแข็ง แกรก... แกรก... ในความมืดนั้น มันคือเสียงเตือนจากมัจจุราช</p>
+<p class="sp d">"คุณพูดถูกทุกอย่าง... <mark class="rd">ผมนี่แหละคือคนที่สะบัดใบมีดตัดคอเอเลน่าตรงจุดนี้เองกับมือ</mark> คราบนักสเก็ตและหน้ากากคนดีมันก็แค่นิทานหลอกเด็กที่องค์กรปั้นแต่งให้ผมสวมตั้งแต่เด็ก... แต่ในฐานะหมาล่าเนื้อขององค์กร ผมมีหน้าที่แค่จัดการคนที่รู้มากเกินไปเท่านั้นเอง"</p>
+<p class="sp">ฉันหยุดสไลด์ตัว ห่างจากปลายกระบอกปืนของเดวิดเพียงไม่กี่ช่วงตัว แสงจันทร์สะท้อนใบมีดสเก็ตของฉันจนเป็นประกาย</p>
+<p class="sp d">"แต่น่าเสียดายนะผู้กอง... ที่บทละครเรื่องนี้ไม่มีตอนจบแบบฮีโร่จับผู้ร้าย เพราะไพ่หนะมันขึ้นเดธมาตั้งแต่แรกแล้ว!!!" ฉันย่อตัวลงเล็กน้อย สปริงข้อเท้าเตรียมพร้อมสำหรับท่วงท่าต่อไป</p>
+<p class="sp d">"เพราะในลานฆาตกรรมของผม... คนที่รู้ถึงการมีอยู่ขององค์กรและตัวตนที่แท้จริงของเซสชั่นขนาดนี้ จะไม่มีวันได้เดินออกไปเปิดเผยมันให้ใครฟังอีกเป็นอันขาด"</p>
+<p class="sp">ฉันสปริงตัวขึ้นสู่ความมืด หมุนตัวกลางอากาศ... พร้อมกับใบมีดสเก็ตที่ตวัดเข้าหาลำคอของพยานทั้งสองในทันที!</p>
+<p class="sp n">ผมก็ไม่ได้อยากทำอะไรแบบนี้ ถ้าผมไม่ทำ ผมก็ต้องตายเหมือนกัน พวกคุณบังคับให้ผมต้องทำแบบนี้เองนะ</p>
+<p class="sp">รอยเลือดที่ติดที่ใบมีดสเก็ตถูกให้กลายเป็นน้ำหมึก ละเลงวาดลวดลายเป็นรูปดาวบนลานสเก็ต โดยที่ตรงกลางมีศพของโค้ชวิคเตอร์และผู้กองอยู่</p>
+<p class="sp n">เซสชั่นเดินออกมาจากลานสเก็ตและค่อยๆ เดินหายไปท่ามกลางเมืองที่มีหิมะตกปกคลุมไปทั่วถนน</p>
+<button class="btn sus" id="sc" style="margin:34px auto 0"><span>ปิดแฟ้มคดี</span></button></div></div>
 <div class="aurora"></div><div class="moon"></div>
 <canvas id="snow"></canvas><div class="spot"></div>
 
@@ -163,7 +219,7 @@ background:#10161f;border:1px solid var(--gold);color:var(--gl);font-family:var(
       <a class="btn" href="https://discord.gg/BThrHNz7vE" target="_blank" rel="noopener"><span>⚔️ DISCORD SERVER</span></a>
       <a class="btn donate" href="https://easydonate.app/seztionv" target="_blank" rel="noopener"><span>💼 FUNDING &amp; DONATE (สนับสนุน)</span></a>
     </div>
-    <div class="board"><div class="bt">EVIDENCE HASHTAGS // ฆาตกรรมบนลานน้ำแข็ง</div>
+    <div class="board"><div class="bt">EVIDENCE HASHTAGS</div>
       <ul class="tags"><li class="tag">#SezLIVE</li><li class="tag">#SezArt</li><li class="tag">#SezMeme</li></ul></div>
     <div class="prog"><span>🔎 หลักฐาน</span><i class="slot"></i><i class="slot"></i><i class="slot"></i><span id="pc">0/3</span></div>
     <div class="scene"><div class="tape">CRIME SCENE • DO NOT CROSS • ที่เกิดเหตุ ห้ามเข้า • CRIME SCENE • DO NOT CROSS •</div><div class="tape b">DO NOT CROSS • ที่เกิดเหตุ ห้ามเข้า • CRIME SCENE • DO NOT CROSS • ที่เกิดเหตุ</div><canvas class="rink" id="rink"></canvas></div>
@@ -274,13 +330,17 @@ function storm(){var x=Math.random()*W,y=0,p=[[x,0]];while(y<H*.55){x+=(Math.ran
 (function ns(){if(RM)return;setTimeout(function(){storm();ns()},9000+Math.random()*9000)})();
 function hud(){document.querySelectorAll('.slot').forEach(function(e,i){e.classList.toggle('on',i<nf)});$('pc').textContent=nf+'/3'}
 function collect(id){if(found[id])return;found[id]=1;nf++;hud();if(nf===3)setTimeout(function(){storm();$('ver').classList.add('on');burst(W/2,H/2,60);if(navigator.vibrate)navigator.vibrate([60,40,60,40,120])},1400)}
-document.querySelectorAll('.sus[data-s]').forEach(function(b){b.addEventListener('click',function(){var ok=b.dataset.s==='1',vt=$('vt');
- if(ok){vt.textContent='🔦 ผู้ดูแลลาน! รอยสเก็ตหายไปที่ประตูหลัง และนาฬิกาหยุดที่ 23:09 ซึ่งเป็นเวลาปิดไฟลาน... คดีปิดแล้วครับ ผู้ว่าจ้าง';$('vc').style.display='flex';document.querySelectorAll('.sus[data-s]').forEach(function(x){x.style.display='none'});burst(W/2,H/3,80)}
+document.querySelectorAll('.sus[data-s]').forEach(function(b){b.addEventListener('click',function(){var ok=b.dataset.s==='2',vt=$('vt');
+ if(ok){document.querySelectorAll('.sus[data-s]').forEach(function(x){x.style.display='none'});openStory()}
  else{vt.textContent='❌ ไม่ใช่คนนี้... ฆาตกรยังลอยนวล ลองดูหลักฐานอีกครั้ง';if(navigator.vibrate)navigator.vibrate(200)}})});
-$('vc').addEventListener('click',function(){$('ver').classList.remove('on');found={};nf=0;hud();$('vt').textContent='เก็บหลักฐานครบแล้ว... ใครคือฆาตกรบนลานน้ำแข็ง?';$('vc').style.display='none';document.querySelectorAll('.sus[data-s]').forEach(function(x){x.style.display='flex'})});
+$('vc').addEventListener('click',function(){$('ver').classList.remove('on');found={};nf=0;hud();$('vt').textContent='เก็บหลักฐานครบแล้ว... ใครคือผู้ลงมือ?';$('vc').style.display='none';document.querySelectorAll('.sus[data-s]').forEach(function(x){x.style.display='flex'})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{root:$('story'),threshold:.2});
+function openStory(){var st=$('story');st.classList.add('on');st.scrollTop=0;burst(W/2,H/3,80);if(navigator.vibrate)navigator.vibrate([80,40,80]);
+ document.querySelectorAll('.sp').forEach(function(p){p.classList.remove('on');setTimeout(function(){io.observe(p)},600)})}
+$('sc').addEventListener('click',function(){$('story').classList.remove('on');$('vc').click()});
 var intro=$('intro');function endIntro(){intro.classList.add('gone');document.body.classList.remove('pre')}
 setTimeout(endIntro,RM?200:3000);intro.addEventListener('pointerdown',endIntro);
-var MK=[[.5,.3,'1','หลักฐาน #1: ผ้าพันคอสีแดง ขาดครึ่งท่อน'],[.86,.74,'2','หลักฐาน #2: รอยสเก็ตสองเส้น หายไปที่ประตูหลัง'],[.26,.72,'3','หลักฐาน #3: นาฬิกาหยุดเดินเวลา 23:09']];
+var MK=[[.5,.3,'1','หลักฐาน #1: บาดแผลที่คอเอเลน่า เกิดจากใบมีดสเก็ต ท่า Triple Axel'],[.86,.74,'2','หลักฐาน #2: ประวัติของใครบางคนถูกลบออกจากระบบราชการ'],[.26,.72,'3','หลักฐาน #3: หลักฐานที่อยู่ชัดเจนเกินไป... เหมือนถูกจัดฉาก']];
 function scene(){var cx0=RW*.66,cy0=RH*.55;
  rx.strokeStyle='rgba(255,255,255,.85)';rx.lineWidth=1.2;rx.beginPath();[[0,-1.2],[1.4,-.2],[.9,.9],[-1.3,.7],[-.6,-1.4]].forEach(function(a){rx.moveTo(cx0-30,cy0);rx.lineTo(cx0-30+a[0]*40,cy0+a[1]*26)});rx.stroke();
   rx.save();rx.translate(cx0,cy0);rx.rotate(-.3);rx.strokeStyle='rgba(255,255,255,.95)';rx.lineWidth=2.5;rx.lineCap='round';
