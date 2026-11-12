@@ -3,1452 +3,313 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>VTuber Profile - SeztionVl</title>
-
+<title>VTuber Profile - SeztionV</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Special+Elite&family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
-
-
 <style>
-
 :root{
-
---bg:#040508;
-
---card:
-linear-gradient(
-145deg,
-#181c25,
-#090b10
-);
-
-
---gold:#d4af37;
-
---gold-light:#ffe55c;
-
---red:#9e0b0f;
-
---white:#f8f8ff;
-
---gray:#b0b5c5;
-
-
---detective:
-'Cinzel',
-serif;
-
-
---code:
-'Special Elite',
-monospace;
-
-
---thai:
-'Kanit',
-sans-serif;
-
+  --bg:#040508; --gold:#d4af37; --gold-light:#ffe55c; --red:#9e0b0f; --ice:#b4dcff; --gray:#b0b5c5;
+  --detective:'Cinzel',serif; --code:'Special Elite',monospace; --thai:'Kanit',sans-serif;
+  --mx:50%; --my:40%;
 }
-
-
-/* =========================
- RESET
-========================= */
-
-
-*{
-
-box-sizing:border-box;
-
-margin:0;
-
-padding:0;
-
-user-select:none;
-
-}
-
-
-
+*{box-sizing:border-box;margin:0;padding:0;user-select:none;-webkit-tap-highlight-color:transparent}
+html{scroll-padding:20px}
 body{
+  min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;
+  background:radial-gradient(circle at top,#18202d,#040508 55%);
+  color:#fff;font-family:var(--thai);overflow-x:hidden;position:relative;
+  cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><circle cx='13' cy='13' r='9' fill='none' stroke='%23ffe55c' stroke-width='2'/><line x1='20' y1='20' x2='29' y2='29' stroke='%23ffe55c' stroke-width='3' stroke-linecap='round'/></svg>") 13 13, auto;
+}
+a{cursor:inherit}
+#snow{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
 
-
-min-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-
-padding:20px;
-
-
-background:
-
-radial-gradient(
-circle at top,
-#18202d,
-#040508 55%
-);
-
-
-color:white;
-
-font-family:var(--thai);
-
-overflow-x:hidden;
-
-
-position:relative;
-
-
+/* ไฟฉายนักสืบ: มืดรอบนอก สว่างรอบเมาส์ */
+.spotlight{
+  position:fixed;inset:0;pointer-events:none;z-index:3;
+  background:radial-gradient(circle 260px at var(--mx) var(--my),transparent 0,rgba(4,5,8,.55) 100%);
+  transition:opacity .6s;
 }
 
-
-
-/* =========================
- SNOW BACKGROUND
-========================= */
-
-
-body::before{
-
-
-content:"";
-
-
-position:fixed;
-
-inset:0;
-
-
-pointer-events:none;
-
-
-z-index:0;
-
-
-background-image:
-
-
-radial-gradient(
-circle,
-rgba(255,255,255,.75) 2px,
-transparent 3px
-),
-
-
-radial-gradient(
-circle,
-rgba(180,220,255,.55) 1px,
-transparent 2px
-);
-
-
-background-size:
-
-
-120px 120px,
-60px 60px;
-
-
-animation:
-
-snowFall 18s linear infinite;
-
-
-}
-
-
-
-@keyframes snowFall{
-
-
-from{
-
-
-background-position:
-
-0 -200px,
-40px -300px;
-
-
-}
-
-
-to{
-
-
-background-position:
-
-120px 900px,
--80px 1000px;
-
-
-}
-
-
-}
-
-
-
-
-/* =========================
- CARD
-========================= */
-
-
+/* การ์ด */
 .card-container{
-
-
-position:relative;
-
-
-width:100%;
-
-max-width:440px;
-
-
-background:var(--card);
-
-
-border:1px solid rgba(212,175,55,.35);
-
-
-clip-path:
-
-polygon(
-0 0,
-calc(100% - 25px) 0,
-100% 25px,
-100% 100%,
-25px 100%,
-0 calc(100% - 25px)
-);
-
-
-
-box-shadow:
-
-
-0 30px 70px black,
-
-0 0 40px rgba(158,11,15,.2),
-
-
-inset 0 0 30px rgba(0,0,0,.8);
-
-
-
-overflow:hidden;
-
-
-z-index:2;
-
-
-isolation:isolate;
-
-
+  position:relative;z-index:2;width:100%;max-width:440px;
+  background:linear-gradient(145deg,#181c25,#090b10);
+  border:1px solid rgba(212,175,55,.35);
+  clip-path:polygon(0 0,calc(100% - 25px) 0,100% 25px,100% 100%,25px 100%,0 calc(100% - 25px));
+  box-shadow:0 30px 70px #000,inset 0 0 30px rgba(0,0,0,.8);
+  overflow:hidden;isolation:isolate;
+  transform-style:preserve-3d;transition:transform .15s ease-out;
+  animation:intro 1.1s cubic-bezier(.2,.8,.2,1) both;
 }
-
-
-
-/* =========================
- ICE BORDER EFFECT
-========================= */
-
-
+@keyframes intro{from{opacity:0;transform:translateY(40px) scale(.94);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
 .card-container::before{
-
-
-content:"";
-
-
-position:absolute;
-
-
-inset:-3px;
-
-
-background:
-
-linear-gradient(
-
-120deg,
-
-transparent,
-
-rgba(180,220,255,.8),
-
-transparent,
-
-rgba(212,175,55,.6),
-
-transparent
-
-);
-
-
-
-background-size:300% 300%;
-
-
-animation:
-
-iceMove 8s infinite;
-
-
-filter:blur(8px);
-
-
-z-index:-1;
-
-
+  content:"";position:absolute;inset:-3px;z-index:-1;filter:blur(8px);
+  background:linear-gradient(120deg,transparent,rgba(180,220,255,.8),transparent,rgba(212,175,55,.6),transparent);
+  background-size:300% 300%;animation:iceMove 8s infinite;
 }
-
-
-
-@keyframes iceMove{
-
-
-0%{
-
-background-position:0% 50%;
-
-}
-
-
-50%{
-
-background-position:100% 50%;
-
-}
-
-
-100%{
-
-background-position:0% 50%;
-
-}
-
-
-}
-
-
-
-/* =========================
- FOG
-========================= */
-
-
-.card-container::after{
-
-
-content:"";
-
-
-position:absolute;
-
-
-bottom:-40px;
-
-
-left:-20%;
-
-
-width:140%;
-
-
-height:130px;
-
-
-
-background:
-
-
-radial-gradient(
-
-ellipse,
-
-rgba(180,220,255,.15),
-
-transparent 70%
-
-);
-
-
-filter:blur(25px);
-
-
-
-animation:
-
-fogMove 12s ease-in-out infinite;
-
-
-
-pointer-events:none;
-
-
-
-z-index:1;
-
-
-}
-
-
-
-@keyframes fogMove{
-
-
-0%,100%{
-
-
-transform:translateX(-40px);
-
-opacity:.3;
-
-
-}
-
-
-50%{
-
-
-transform:translateX(40px);
-
-opacity:.8;
-
-
-}
-
-
-}
-
-
-
-/* =========================
- STAMP
-========================= */
-
-
+@keyframes iceMove{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* แสงสะท้อนตามเมาส์บนการ์ด */
+.glare{position:absolute;inset:0;z-index:6;pointer-events:none;mix-blend-mode:overlay;opacity:0;transition:opacity .3s;
+  background:radial-gradient(circle at var(--gx,50%) var(--gy,30%),rgba(255,255,255,.35),transparent 45%)}
+.card-container:hover .glare{opacity:1}
+
+/* หมอก */
+.fog{position:absolute;left:-20%;width:140%;height:140px;bottom:-40px;z-index:1;pointer-events:none;filter:blur(25px);
+  background:radial-gradient(ellipse,rgba(180,220,255,.2),transparent 70%);animation:fog 12s ease-in-out infinite}
+@keyframes fog{0%,100%{transform:translateX(-40px);opacity:.3}50%{transform:translateX(40px);opacity:.85}}
+
+/* ตราประทับ */
 .stamp-badge{
-
-
-position:absolute;
-
-
-top:20px;
-
-
-right:20px;
-
-
-
-font-family:var(--code);
-
-
-font-size:11px;
-
-
-letter-spacing:2px;
-
-
-color:#ff3333;
-
-
-border:2px solid #ff3333;
-
-
-padding:5px 10px;
-
-
-transform:rotate(8deg);
-
-
-background:rgba(0,0,0,.75);
-
-
-
-z-index:5;
-
-
-
-box-shadow:
-
-0 5px 15px black;
-
-
-animation:
-
-stampFloat 4s infinite ease-in-out;
-
-
+  position:absolute;top:20px;right:20px;z-index:5;font-family:var(--code);font-size:11px;letter-spacing:2px;
+  color:#ff3333;border:2px solid #ff3333;padding:5px 10px;background:rgba(0,0,0,.75);
+  transform:rotate(8deg);box-shadow:0 5px 15px #000;
+  animation:stampIn .5s .9s cubic-bezier(.3,1.8,.5,1) both,stampFloat 4s 1.5s infinite ease-in-out;
 }
-
-
-
-@keyframes stampFloat{
-
-
-0%,100%{
-
-transform:
-rotate(8deg)
-translateY(0);
-
-}
-
-
-50%{
-
-transform:
-rotate(8deg)
-translateY(-4px);
-
-}
-
-
-}
-
-
-/* =========================
- BANNER
-========================= */
-
-
-.banner-wrapper{
-
-
-height:160px;
-
-
-position:relative;
-
-
-background:black;
-
-
-
-border-bottom:
-
-2px solid rgba(212,175,55,.4);
-
-
-}
-
-
-.banner-img{
-
-
-width:100%;
-
-
-height:100%;
-
-
-object-fit:cover;
-
-
-filter:
-
-brightness(.75)
-contrast(120%);
-
-
-}
-
-
-.banner-overlay{
-
-
-position:absolute;
-
-
-inset:0;
-
-
-
-background:
-
-linear-gradient(
-
-to bottom,
-
-transparent,
-
-#090b10
-
-);
-
-
-}
-
-
-
-
-
-
-/* =========================
- CONTENT
-========================= */
-
-
-.card-content{
-
-
-padding:
-
-0 25px 35px;
-
-
-text-align:center;
-
-
-}
-
-
-
-
-/* =========================
- AVATAR
-========================= */
-
-
-.avatar-wrapper{
-
-
-width:116px;
-
-
-height:116px;
-
-
-margin:-58px auto 18px;
-
-
-position:relative;
-
-
-z-index:5;
-
-
-animation:
-
-avatarGlow 5s infinite ease-in-out;
-
-
-}
-
-
-
-@keyframes avatarGlow{
-
-
-0%,100%{
-
-
-filter:
-
-drop-shadow(
-0 0 12px rgba(212,175,55,.4)
-);
-
-
-}
-
-
-
-50%{
-
-
-filter:
-
-drop-shadow(
-0 0 30px rgba(180,220,255,.8)
-);
-
-
-}
-
-
-
-}
-
-
-
-.avatar-frame{
-
-
-width:100%;
-
-
-height:100%;
-
-
-padding:4px;
-
-
-
-background:
-
-linear-gradient(
-
-135deg,
-
-#ffe55c,
-
-#d4af37,
-
-#9e0b0f,
-
-#330000
-
-);
-
-
-
-clip-path:
-
-polygon(
-30% 0,
-70% 0,
-100% 30%,
-100% 70%,
-70% 100%,
-30% 100%,
-0 70%,
-0 30%
-);
-
-
-
-}
-
-
-
-.avatar-img{
-
-
-width:100%;
-
-
-height:100%;
-
-
-object-fit:cover;
-
-
-background:black;
-
-
-
-clip-path:
-
-polygon(
-30% 0,
-70% 0,
-100% 30%,
-100% 70%,
-70% 100%,
-30% 100%,
-0 70%,
-0 30%
-);
-
-
-
-display:block;
-
-
-}
-
-
-
-/* =========================
- TITLE
-========================= */
-
-
+@keyframes stampIn{from{opacity:0;transform:rotate(-12deg) scale(2.6)}to{opacity:1;transform:rotate(8deg) scale(1)}}
+@keyframes stampFloat{0%,100%{transform:rotate(8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-4px)}}
+
+/* แบนเนอร์ */
+.banner-wrapper{height:160px;position:relative;background:#000;border-bottom:2px solid rgba(212,175,55,.4);overflow:hidden}
+.banner-img{width:100%;height:100%;object-fit:cover;filter:brightness(.75) contrast(120%);transform:scale(1.08);transition:transform .2s ease-out}
+.banner-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent,#090b10)}
+.banner-wrapper::after{ /* เส้นสแกน */
+  content:"";position:absolute;left:0;right:0;height:40px;top:-40px;
+  background:linear-gradient(transparent,rgba(180,220,255,.18),transparent);animation:scan 6s 2s infinite linear}
+@keyframes scan{to{top:170px}}
+
+.card-content{padding:0 25px 35px;text-align:center;position:relative;z-index:2}
+
+/* อวาตาร์ */
+.avatar-wrapper{width:116px;height:116px;margin:-58px auto 18px;position:relative;z-index:5;animation:avatarGlow 5s infinite ease-in-out}
+@keyframes avatarGlow{0%,100%{filter:drop-shadow(0 0 12px rgba(212,175,55,.4))}50%{filter:drop-shadow(0 0 30px rgba(180,220,255,.85))}}
+.avatar-frame,.avatar-img{clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%)}
+.avatar-frame{width:100%;height:100%;padding:4px;background:linear-gradient(135deg,#ffe55c,#d4af37,#9e0b0f,#330000);transition:transform .4s}
+.avatar-wrapper:hover .avatar-frame{transform:rotate(12deg) scale(1.08)}
+.avatar-img{width:100%;height:100%;object-fit:cover;background:#000;display:block}
+
+/* ชื่อ */
 .detective-title{
-
-
-font-family:var(--detective);
-
-
-font-size:26px;
-
-
-font-weight:900;
-
-
-letter-spacing:4px;
-
-
-margin-bottom:5px;
-
-
-background:
-
-linear-gradient(
-
-white,
-
-#d4af37
-
-);
-
-
--webkit-background-clip:text;
-
-
--webkit-text-fill-color:transparent;
-
-
-
-text-shadow:
-
-0 5px 15px rgba(212,175,55,.4);
-
-
+  font-family:var(--detective);font-size:28px;font-weight:900;letter-spacing:4px;margin-bottom:5px;position:relative;display:inline-block;
+  background:linear-gradient(90deg,#fff 0%,#d4af37 40%,#ffe55c 50%,#d4af37 60%,#fff 100%);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 5s linear infinite;
 }
+@keyframes shine{to{background-position:-250% 0}}
+.case-code{font-family:var(--code);font-size:12px;letter-spacing:2px;color:var(--gold);margin-bottom:14px;min-height:18px}
+.case-code::after{content:"▌";margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.vtuber-lore{font-size:13px;line-height:1.7;font-style:italic;color:#d0d5e0;margin-bottom:25px;min-height:44px;transition:opacity .5s}
 
-
-
-.case-code{
-
-
-font-family:var(--code);
-
-
-font-size:11px;
-
-
-letter-spacing:2px;
-
-
-color:#d4af37;
-
-
-margin-bottom:15px;
-
-
-}
-
-
-
-.vtuber-lore{
-
-
-font-size:13px;
-
-
-line-height:1.6;
-
-
-font-style:italic;
-
-
-color:#d0d5e0;
-
-
-margin-bottom:25px;
-
-
-}
-
-
-
-/* =========================
- BUTTON AREA
-========================= */
-
-
-.links-group{
-
-
-display:flex;
-
-
-flex-direction:column;
-
-
-gap:14px;
-
-
-margin-bottom:25px;
-
-
-}
-
-
-
-
+/* ปุ่ม */
+.links-group{display:flex;flex-direction:column;gap:14px;margin-bottom:25px}
 .btn-link{
-
-
-position:relative;
-
-
-display:flex;
-
-
-align-items:center;
-
-
-justify-content:space-between;
-
-
-padding:
-
-14px 20px;
-
-
-
-background:
-
-linear-gradient(
-
-180deg,
-
-#1d222e,
-
-#10131a
-
-);
-
-
-
-border:
-
-1px solid rgba(212,175,55,.3);
-
-
-
-color:white;
-
-
-text-decoration:none;
-
-
-font-size:14px;
-
-
-font-weight:600;
-
-
-letter-spacing:1px;
-
-
-
-overflow:hidden;
-
-
-
-transition:
-
-.35s ease;
-
-
-
-box-shadow:
-
-0 5px 10px black,
-
-inset 0 1px rgba(255,255,255,.1);
-
-
-
+  position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;
+  background:linear-gradient(180deg,#1d222e,#10131a);border:1px solid rgba(212,175,55,.3);
+  color:#fff;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:1px;overflow:hidden;
+  transition:.35s ease;box-shadow:0 5px 10px #000,inset 0 1px rgba(255,255,255,.1);
+  opacity:0;animation:rise .6s cubic-bezier(.2,.8,.2,1) forwards;
 }
-
-
-
-.btn-link::before{
-
-
-content:"►";
-
-
-color:#d4af37;
-
-
-margin-right:10px;
-
-
-transition:.3s;
-
-
-}
-
-
-
-
-.btn-link:hover{
-
-
-transform:
-
-translateY(-4px);
-
-
-
-border-color:#ffe55c;
-
-
-
-box-shadow:
-
-
-0 12px 25px black,
-
-0 0 18px rgba(212,175,55,.35);
-
-
-}
-
-
-
-.btn-link:hover::before{
-
-
-transform:
-
-translateX(5px);
-
-
-color:#ff3333;
-
-
-}
-
-
-
-/* DONATE */
-
-
-.btn-donate{
-
-
-background:
-
-linear-gradient(
-
-180deg,
-
-#8a0c10,
-
-#520507
-
-);
-
-
-
-border-color:#9e0b0f;
-
-
-}
-
-
-
-.btn-donate:hover{
-
-
-background:
-
-linear-gradient(
-
-180deg,
-
-#a81014,
-
-#70080b
-
-);
-
-
-box-shadow:
-
-
-0 12px 25px black,
-
-0 0 25px rgba(158,11,15,.7);
-
-
-}
-
-
-
-
-
-/* =========================
- INFO BOX
-========================= */
-
-
-.info-grid{
-
-
-background:#06080b;
-
-
-padding:16px;
-
-
-border:
-
-1px solid rgba(255,255,255,.05);
-
-
-
-box-shadow:
-
-inset 0 5px 15px black;
-
-
-text-align:left;
-
-
-}
-
-
-
-.info-title{
-
-
-font-family:var(--code);
-
-
-font-size:12px;
-
-
-letter-spacing:2px;
-
-
-color:#d4af37;
-
-
-margin-bottom:10px;
-
-
-}
-
-
-
-
-.tag-list{
-
-
-display:flex;
-
-
-flex-wrap:wrap;
-
-
-gap:8px;
-
-
-list-style:none;
-
-
-margin-bottom:15px;
-
-
-}
-
-
-
+.btn-link:nth-child(1){animation-delay:1.1s}.btn-link:nth-child(2){animation-delay:1.2s}
+.btn-link:nth-child(3){animation-delay:1.3s}.btn-link:nth-child(4){animation-delay:1.4s}.btn-link:nth-child(5){animation-delay:1.5s}
+@keyframes rise{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+.btn-link::before{content:"►";color:var(--gold);margin-right:10px;transition:.3s}
+.btn-link::after{ /* แสงกวาด */
+  content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn-link:hover::after{left:130%}
+.btn-link span{flex:1;text-align:left}
+.btn-link:hover,.btn-link:focus-visible{transform:translateY(-4px);border-color:var(--gold-light);outline:none;
+  box-shadow:0 12px 25px #000,0 0 18px rgba(212,175,55,.35)}
+.btn-link:hover::before{transform:translateX(5px);color:#ff3333}
+.btn-link:active{transform:translateY(-1px) scale(.98)}
+.btn-donate{background:linear-gradient(180deg,#8a0c10,#520507);border-color:var(--red)}
+.btn-donate:hover{background:linear-gradient(180deg,#a81014,#70080b);box-shadow:0 12px 25px #000,0 0 25px rgba(158,11,15,.7)}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,229,92,.4);transform:scale(0);animation:rip .6s linear;pointer-events:none}
+@keyframes rip{to{transform:scale(4);opacity:0}}
+
+/* กระดานหลักฐาน */
+.info-grid{background:#06080b;padding:16px;border:1px solid rgba(255,255,255,.05);box-shadow:inset 0 5px 15px #000;text-align:left;position:relative}
+.info-title{font-family:var(--code);font-size:12px;letter-spacing:2px;color:var(--gold);margin-bottom:12px}
+.tag-list{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin-bottom:15px}
 .tag-item{
-
-
-padding:
-
-5px 10px;
-
-
-
-background:
-
-linear-gradient(
-
-180deg,
-
-#151820,
-
-#090b10
-
-);
-
-
-
-border:
-
-1px solid rgba(212,175,55,.25);
-
-
-
-font-family:var(--code);
-
-
-font-size:11px;
-
-
-color:#b0b5c5;
-
-
+  position:relative;padding:6px 12px 6px 22px;background:linear-gradient(180deg,#151820,#090b10);
+  border:1px solid rgba(212,175,55,.25);font-family:var(--code);font-size:11px;color:var(--gray);
+  transition:.3s;transform:rotate(var(--r,0deg));
 }
+.tag-item::before{content:"";position:absolute;left:8px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;
+  background:#ff3333;box-shadow:0 0 8px #ff3333} /* หมุดแดง */
+.tag-item:nth-child(1){--r:-2deg}.tag-item:nth-child(2){--r:1.5deg}.tag-item:nth-child(3){--r:-1deg}
+.tag-item:hover{transform:rotate(0) scale(1.1);color:#fff;border-color:var(--gold-light)}
+.credits{border-top:1px dashed rgba(255,255,255,.15);padding-top:10px;display:flex;justify-content:space-between;font-family:var(--code);font-size:11px;color:#6a7080}
+.credits b{color:#d0d5e0}
 
+/* toast */
+.toast{position:fixed;left:50%;bottom:26px;z-index:10;transform:translate(-50%,40px);opacity:0;
+  background:#10131a;border:1px solid var(--gold);color:var(--gold-light);font-family:var(--code);font-size:12px;
+  padding:10px 18px;transition:.4s;pointer-events:none}
+.toast.show{transform:translate(-50%,0);opacity:1}
 
-
-.credits{
-
-
-border-top:
-
-1px dashed rgba(255,255,255,.15);
-
-
-
-padding-top:10px;
-
-
-
-display:flex;
-
-
-justify-content:space-between;
-
-
-font-family:var(--code);
-
-
-font-size:11px;
-
-
-color:#6a7080;
-
-
+@media (hover:none){.spotlight{display:none}body{cursor:auto}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}
+  .btn-link{opacity:1}
 }
-
-
-
-.credits b{
-
-
-color:#d0d5e0;
-
-
-}
-
-
 </style>
-
 </head>
-
-
 <body>
 
+<canvas id="snow"></canvas>
+<div class="spotlight" id="spot"></div>
 
-<div class="card-container">
+<div class="card-container" id="card">
+  <div class="glare"></div>
+  <div class="fog"></div>
 
+  <div class="stamp-badge">CASE #009 // SECRET</div>
 
-    <div class="stamp-badge">
-        CASE #009 // SECRET
+  <div class="banner-wrapper">
+    <img src="112.png" alt="VTuber Banner" class="banner-img" id="banner">
+    <div class="banner-overlay"></div>
+  </div>
+
+  <div class="card-content">
+    <div class="avatar-wrapper">
+      <div class="avatar-frame">
+        <img src="22223.png" alt="VTuber Model" class="avatar-img">
+      </div>
     </div>
 
+    <h1 class="detective-title" id="name" title="คลิกเพื่อเปิดแฟ้มลับ">SeztionV</h1>
+    <div class="case-code" id="typed"></div>
+    <p class="vtuber-lore" id="lore">"คนที่รู้ความจริงหนะ... ผมเองก็ไม่รู้"</p>
 
-
-    <div class="banner-wrapper">
-
-        <img 
-        src="112.png" 
-        alt="VTuber Banner"
-        class="banner-img">
-
-        <div class="banner-overlay"></div>
-
+    <div class="links-group">
+      <a href="https://www.youtube.com/@SeztionV" target="_blank" rel="noopener" class="btn-link"><span>📺 YOUTUBE CHANNEL</span></a>
+      <a href="https://www.facebook.com/profile.php?id=61591972812578" target="_blank" rel="noopener" class="btn-link"><span>📘 FACEBOOK PAGE</span></a>
+      <a href="https://www.tiktok.com/@seztionv" target="_blank" rel="noopener" class="btn-link"><span>🎵 TIKTOK OFFICIAL</span></a>
+      <a href="https://discord.gg/BThrHNz7vE" target="_blank" rel="noopener" class="btn-link"><span>⚔️ DISCORD SERVER</span></a>
+      <a href="https://easydonate.app/seztionv" target="_blank" rel="noopener" class="btn-link btn-donate"><span>💼 FUNDING &amp; DONATE (สนับสนุน)</span></a>
     </div>
 
-
-
-
-
-    <div class="card-content">
-
-
-
-        <div class="avatar-wrapper">
-
-            <div class="avatar-frame">
-
-                <img 
-                src="22223.png"
-                alt="VTuber Model"
-                class="avatar-img">
-
-            </div>
-
-        </div>
-
-
-
-
-
-        <h1 class="detective-title">
-            SeztionV
-        </h1>
-
-
-        <div class="case-code">
-            [ สวัสดีผู้ว่าจ้างครับ ]
-        </div>
-
-
-
-
-
-        <p class="vtuber-lore">
-
-            "คนที่รู้ความจริงหนะ... ผมเองก็ไม่รู้"
-
-        </p>
-
-
-
-
-
-
-
-        <div class="links-group">
-
-
-
-            <a 
-            href="https://www.youtube.com/@SeztionV"
-            target="_blank"
-            class="btn-link">
-
-                <span>
-                📺 YOUTUBE CHANNEL
-                </span>
-
-            </a>
-
-
-
-
-
-            <a 
-            href="https://www.facebook.com/profile.php?id=61591972812578"
-            target="_blank"
-            class="btn-link">
-
-                <span>
-                📘 FACEBOOK PAGE
-                </span>
-
-            </a>
-
-
-
-
-
-            <a 
-            href="https://www.tiktok.com/@seztionv"
-            target="_blank"
-            class="btn-link">
-
-                <span>
-                🎵 TIKTOK OFFICIAL
-                </span>
-
-            </a>
-
-
-
-
-
-            <a 
-            href="https://discord.gg/BThrHNz7vE"
-            target="_blank"
-            class="btn-link">
-
-                <span>
-                ⚔️ DISCORD SERVER
-                </span>
-
-            </a>
-
-
-
-
-
-            <a 
-            href="https://easydonate.app/seztionv"
-            target="_blank"
-            class="btn-link btn-donate">
-
-
-                <span>
-                💼 FUNDING & DONATE (สนับสนุน)
-                </span>
-
-
-            </a>
-
-
-
-        </div>
-
-
-
-
-
-
-
-        <div class="info-grid">
-
-
-            <div class="info-title">
-
-                EVIDENCE HASHTAGS
-
-            </div>
-
-
-
-
-
-            <ul class="tag-list">
-
-
-                <li class="tag-item">
-                    #SezLIVE
-                </li>
-
-
-                <li class="tag-item">
-                    #SezArt
-                </li>
-
-
-                <li class="tag-item">
-                    #SezMeme
-                </li>
-
-
-            </ul>
-
-        </div>
-
-     </div>
-
+    <div class="info-grid">
+      <div class="info-title">EVIDENCE HASHTAGS</div>
+      <ul class="tag-list">
+        <li class="tag-item" data-tag="#SezLIVE">#SezLIVE</li>
+        <li class="tag-item" data-tag="#SezArt">#SezArt</li>
+        <li class="tag-item" data-tag="#SezMeme">#SezMeme</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
-</body>
+<div class="toast" id="toast"></div>
 
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement;
+
+  /* ---------- หิมะ 3 ชั้น + ลมตามเมาส์ ---------- */
+  var cv = document.getElementById('snow'), cx = cv.getContext('2d');
+  var W, H, flakes = [], wind = 0, windT = 0;
+  function size(){
+    var d = Math.min(devicePixelRatio||1, 2);
+    W = innerWidth; H = innerHeight;
+    cv.width = W*d; cv.height = H*d; cx.setTransform(d,0,0,d,0,0);
+    var n = Math.round(W*H/9000); flakes = [];
+    for(var i=0;i<n;i++){
+      var z = Math.random();                         // 0 = ไกล, 1 = ใกล้
+      flakes.push({x:Math.random()*W,y:Math.random()*H,z:z,r:.8+z*3,v:.4+z*1.6,p:Math.random()*6.28});
+    }
+  }
+  size(); addEventListener('resize', size);
+  function snow(t){
+    cx.clearRect(0,0,W,H);
+    wind += (windT - wind)*.03;
+    for(var i=0;i<flakes.length;i++){
+      var f = flakes[i];
+      f.y += f.v; f.p += .015;
+      f.x += Math.sin(f.p)*.4 + wind*(.3+f.z);
+      if(f.y > H+5){f.y = -5; f.x = Math.random()*W}
+      if(f.x > W+5) f.x = -5; if(f.x < -5) f.x = W+5;
+      cx.globalAlpha = .35 + f.z*.55;
+      cx.fillStyle = f.z>.7 ? '#e8f4ff' : '#b4dcff';
+      cx.beginPath(); cx.arc(f.x,f.y,f.r,0,6.283); cx.fill();
+    }
+    if(!reduce) requestAnimationFrame(snow);
+  }
+  snow();
+
+  /* ---------- ไฟฉาย + เอียงการ์ด 3D ---------- */
+  var card = document.getElementById('card'), banner = document.getElementById('banner');
+  var glare = card.querySelector('.glare');
+  function move(x,y){
+    root.style.setProperty('--mx', x+'px'); root.style.setProperty('--my', y+'px');
+    windT = (x/W - .5)*5;
+    var r = card.getBoundingClientRect();
+    var px = (x - r.left)/r.width, py = (y - r.top)/r.height;
+    if(px>=0 && px<=1 && py>=0 && py<=1 && !reduce){
+      card.style.transform = 'perspective(900px) rotateY('+((px-.5)*7)+'deg) rotateX('+((.5-py)*7)+'deg)';
+      glare.style.setProperty('--gx', px*100+'%'); glare.style.setProperty('--gy', py*100+'%');
+      banner.style.transform = 'scale(1.08) translate('+((.5-px)*10)+'px,'+((.5-py)*6)+'px)';
+    } else { card.style.transform = ''; }
+  }
+  addEventListener('pointermove', function(e){ move(e.clientX, e.clientY) });
+  document.addEventListener('pointerleave', function(){ card.style.transform=''; windT=0 });
+
+  /* ---------- พิมพ์ดีดข้อความ ---------- */
+  var typed = document.getElementById('typed');
+  var lines = ['[ สวัสดีผู้ว่าจ้างครับ ]','[ มีคดีอะไรให้ช่วยไหม? ]','[ แฟ้มคดีเปิดอยู่เสมอ ]'];
+  var li = 0, ci = 0, del = false;
+  function type(){
+    var s = lines[li];
+    if(reduce){ typed.textContent = s; return; }
+    ci += del ? -1 : 1;
+    typed.textContent = s.slice(0,ci);
+    var d = del ? 35 : 80;
+    if(!del && ci === s.length){ del = true; d = 2200 }
+    else if(del && ci === 0){ del = false; li = (li+1)%lines.length; d = 500 }
+    setTimeout(type, d);
+  }
+  setTimeout(type, 1300);
+
+  /* ---------- สลับคำคม (คลิกชื่อ) ---------- */
+  var quotes = [
+    '"คนที่รู้ความจริงหนะ... ผมเองก็ไม่รู้"',
+    '"หิมะลบรอยเท้าได้... แต่ลบความจริงไม่ได้"',
+    '"ทุกคดีมีเงา และเงาทุกตัวมีเจ้าของ"',
+    '"อย่าไว้ใจใคร... รวมถึงผมด้วย"'
+  ], qi = 0, lore = document.getElementById('lore');
+  function nextQuote(){
+    qi = (qi+1)%quotes.length; lore.style.opacity = 0;
+    setTimeout(function(){ lore.textContent = quotes[qi]; lore.style.opacity = 1 }, 350);
+  }
+  document.getElementById('name').addEventListener('click', nextQuote);
+  setInterval(nextQuote, 9000);
+
+  /* ---------- ริปเปิลปุ่ม ---------- */
+  document.querySelectorAll('.btn-link').forEach(function(b){
+    b.addEventListener('pointerdown', function(e){
+      var r = b.getBoundingClientRect(), s = Math.max(r.width,r.height), el = document.createElement('i');
+      el.className = 'ripple';
+      el.style.cssText = 'width:'+s+'px;height:'+s+'px;left:'+(e.clientX-r.left-s/2)+'px;top:'+(e.clientY-r.top-s/2)+'px';
+      b.appendChild(el); setTimeout(function(){ el.remove() }, 600);
+    });
+  });
+
+  /* ---------- คลิกแฮชแท็กเพื่อคัดลอก ---------- */
+  var toast = document.getElementById('toast'), tt;
+  document.querySelectorAll('.tag-item').forEach(function(t){
+    t.addEventListener('click', function(){
+      var tag = t.dataset.tag;
+      if(navigator.clipboard) navigator.clipboard.writeText(tag).catch(function(){});
+      toast.textContent = 'คัดลอกหลักฐาน ' + tag + ' แล้ว';
+      toast.classList.add('show'); clearTimeout(tt);
+      tt = setTimeout(function(){ toast.classList.remove('show') }, 1800);
+    });
+  });
+})();
+</script>
+</body>
 </html>
